@@ -16,6 +16,7 @@ const CONFIG = {
 
     ]
 };
+let terminalAnimationRunning = false;
 
 new Typed('#typed', {
     strings: [
@@ -29,20 +30,32 @@ new Typed('#typed', {
 });
 
 function animateTerminal() {
+    if (terminalAnimationRunning) return;
+    terminalAnimationRunning = true;
+
     const terminalText = document.getElementById('terminal-text');
+    if (!terminalText) return;
+
     let commandIndex = 0;
+    let currentInterval = null;
 
     function typeCommand() {
         const command = CONFIG.terminal_commands[commandIndex];
         let charIndex = 0;
 
         terminalText.textContent = '';
-        const typeInterval = setInterval(() => {
+
+        if (currentInterval) {
+            clearInterval(currentInterval);
+        }
+
+        currentInterval = setInterval(() => {
             if (charIndex < command.length) {
                 terminalText.textContent += command[charIndex];
                 charIndex++;
             } else {
-                clearInterval(typeInterval);
+                clearInterval(currentInterval);
+                currentInterval = null;
                 setTimeout(() => {
                     commandIndex = (commandIndex + 1) % CONFIG.terminal_commands.length;
                     typeCommand();
