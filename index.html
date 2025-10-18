@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fico Y.P | A Portofolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="text-gray-100">
+    <div class="cyber-grid"></div>
+    <div class="scanline"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+            <a href="#" class="logo">
+                <span class="text-green-400">&gt;</span> nullcranium<span class="cursor-blink">_</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#home" class="nav-link">
+                    <span class="text-green-400">01.</span> home
+                </a>
+                <a href="#about" class="nav-link">
+                    <span class="text-green-400">02.</span> about
+                </a>
+                <a href="#projects" class="nav-link">
+                    <span class="text-green-400">03.</span> projects
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="glitch-wrapper">
+                <div class="terminal-prompt">
+                    <span class="text-green-400">root@system</span>
+                    <span class="text-gray-500">:</span>
+                    <span class="text-blue-400">~</span>
+                    <span class="text-gray-500">$</span>
+                </div>
+            </div>
+            <h1 class="hero-title">
+                <span class="text-green-400">&gt;</span> I'm <span id="typed" class="typed-text"></span>
+            </h1>
+            <p class="hero-subtitle">
+                <span class="text-gray-500">//</span> Cybersecurity enthusiast | Penetration tester in training
+            </p>
+            <div class="hero-cta">
+                <a href="#projects" class="cta-button">
+                    <i class="fas fa-terminal"></i> View Projects
+                </a>
+                <a href="#about" class="cta-button-secondary">
+                    <i class="fas fa-user-shield"></i> About Me
+                </a>
+            </div>
+        </div>
+
+        <!-- Animated Terminal -->
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <span class="terminal-title">terminal@nullcranium</span>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-line">
+                    <span class="text-green-400">$</span> <span id="terminal-text"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-title">
+                <span class="text-green-400">02.</span> About Me
+                <div class="title-line"></div>
+            </h2>
+
+            <div class="about-grid">
+                <!-- Left Content -->
+                <div class="about-content">
+                    <div class="info-card">
+                        <div class="card-header">
+                            <i class="fas fa-user-secret text-green-400"></i>
+                            <h3 class="text-2xl font-bold">nullcranium</h3>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Passionate about cybersecurity, ethical hacking, and building secure systems.
+                            Currently exploring the depths of penetration testing and vulnerability research.
+                        </p>
+                    </div>
+
+                    <div class="skills-card">
+                        <h4 class="card-title">
+                            <i class="fas fa-code text-green-400"></i> Skills & Tools
+                        </h4>
+                        <div class="skills-grid">
+                            <div class="skill-tag">Linux</div>
+                            <div class="skill-tag">Python</div>
+                            <div class="skill-tag">Reverse Engineering</div>
+                            <div class="skill-tag">Network Security</div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="" target="_blank" class="social-button">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="" target="_blank" class="social-button">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Image -->
+                <div class="profile-container">
+                    <div class="profile-wrapper">
+                        <div class="profile-border"></div>
+                        <img src="assets/petrik.jpg" alt="Profile" class="profile-image" />
+                        <div class="profile-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-title">
+                <span class="text-green-400">03.</span> Projects
+                <div class="title-line"></div>
+            </h2>
+
+            <div class="projects-status">
+                <span class="status-dot"></span>
+                <span class="text-gray-400">Fetching repositories from GitHub...</span>
+            </div>
+
+            <div id="project-list" class="projects-grid"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="max-w-6xl mx-auto px-6 py-8">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p class="text-gray-500">
+                        <span class="text-green-400">&gt;</span> Built with curiosity and caffeine
+                    </p>
+                    <p class="text-sm text-gray-600">© 2025 nullcranium. All rights reserved.</p>
+                </div>
+                <a href="https://github.com/nullcranium target=" _blank" class="footer-link">
+                    <i class="fab fa-github text-2xl"></i>
+                    <span>@nullcranium</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
