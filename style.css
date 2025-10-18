@@ -175,6 +175,7 @@ code,
     cursor: pointer;
     padding: 0.5rem;
     transition: color 0.3s ease;
+    z-index: 60;
 }
 
 .mobile-menu-btn:hover {
@@ -687,6 +688,7 @@ code,
     color: var(--accent-green);
 }
 
+
 @media (max-width: 768px) {
     .mobile-menu-btn {
         display: block;
@@ -738,7 +740,7 @@ code,
     }
 
     .terminal-window {
-        margin-top: 2rem;
+        display: none;
     }
 
     .terminal-body {
@@ -802,7 +804,17 @@ code,
         gap: 1.5rem;
         text-align: center;
     }
+
+    /* prevent zooming out */
+    .header .nav-links:not(.active) {
+        display: none;
+    }
+
+    .header .nav-links.active {
+        display: flex;
+    }
 }
+
 
 @media (max-width: 640px) {
     .logo {
