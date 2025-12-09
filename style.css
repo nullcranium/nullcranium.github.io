@@ -165,6 +165,20 @@ code,
     width: 100%;
 }
 
+.nav-link::before {
+    content: '';
+    color: var(--accent-green);
+    margin-right: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover::before {
+    content: '$';
+    margin-right: 0.25rem;
+    opacity: 1;
+}
+
 /* ===== Mobile Menu Btn ===== */
 .mobile-menu-btn {
     display: none;
@@ -515,6 +529,95 @@ code,
     pointer-events: none;
 }
 
+/* ===== Experience Section ===== */
+.experience-section {
+    min-height: 100vh;
+    padding: 6rem 0;
+    position: relative;
+    z-index: 2;
+}
+
+.experience-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 900px;
+}
+
+.experience-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.experience-card:hover {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+    transform: translateX(8px);
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.experience-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.experience-role {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.experience-company {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.experience-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.experience-location {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.experience-list {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+
+.experience-list li {
+    position: relative;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+}
+
+.experience-list li::before {
+    content: '▹';
+    position: absolute;
+    left: -1.5rem;
+    color: var(--accent-green);
+    font-size: 1.2rem;
+}
+
 /* ===== Projects Section ===== */
 .projects-section {
     min-height: 100vh;
@@ -773,6 +876,23 @@ code,
 
     .profile-wrapper {
         max-width: 300px;
+    }
+
+    .experience-section {
+        padding: 4rem 0;
+    }
+
+    .experience-card {
+        padding: 1.5rem;
+    }
+
+    .experience-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .experience-header i {
+        align-self: flex-start;
     }
 
     .projects-section {
