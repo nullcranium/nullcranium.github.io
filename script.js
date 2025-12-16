@@ -17,6 +17,7 @@ const CONFIG = {
     ]
 };
 let terminalAnimationRunning = false;
+let terminalInterval = null;
 
 new Typed('#typed', {
     strings: [
@@ -29,6 +30,14 @@ new Typed('#typed', {
     cursorChar: '_'
 });
 
+function stopTerminalAnimation() {
+    if (terminalInterval) {
+        clearInterval(terminalInterval);
+        terminalInterval = null;
+    }
+    terminalAnimationRunning = false;
+}
+
 function animateTerminal() {
     if (terminalAnimationRunning) return;
     terminalAnimationRunning = true;
@@ -37,7 +46,6 @@ function animateTerminal() {
     if (!terminalText) return;
 
     let commandIndex = 0;
-    let currentInterval = null;
 
     function typeCommand() {
         const command = CONFIG.terminal_commands[commandIndex];
@@ -45,20 +53,22 @@ function animateTerminal() {
 
         terminalText.textContent = '';
 
-        if (currentInterval) {
-            clearInterval(currentInterval);
+        if (terminalInterval) {
+            clearInterval(terminalInterval);
         }
 
-        currentInterval = setInterval(() => {
+        terminalInterval = setInterval(() => {
             if (charIndex < command.length) {
                 terminalText.textContent += command[charIndex];
                 charIndex++;
             } else {
-                clearInterval(currentInterval);
-                currentInterval = null;
+                clearInterval(terminalInterval);
+                terminalInterval = null;
                 setTimeout(() => {
-                    commandIndex = (commandIndex + 1) % CONFIG.terminal_commands.length;
-                    typeCommand();
+                    if (terminalAnimationRunning) {
+                        commandIndex = (commandIndex + 1) % CONFIG.terminal_commands.length;
+                        typeCommand();
+                    }
                 }, 2000);
             }
         }, 50);
@@ -206,6 +216,46 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // terminal toggle
+    const terminalWindow = document.getElementById('terminal-window');
+    const terminalToggleBtn = document.getElementById('terminal-toggle-btn');
+    const terminalCloseBtn = document.getElementById('terminal-close-btn');
+
+    function isDesktop() {
+        return window.innerWidth >= 769;
+    }
+
+    function collapseTerminal() {
+        if (!isDesktop()) return;
+        terminalWindow.classList.add('collapsed');
+        terminalToggleBtn.classList.add('visible');
+        stopTerminalAnimation();
+    }
+
+    function expandTerminal() {
+        if (!isDesktop()) return;
+        terminalWindow.classList.remove('collapsed');
+        terminalToggleBtn.classList.remove('visible');
+        terminalAnimationRunning = false;
+        animateTerminal();
+    }
+
+    if (terminalCloseBtn) {
+        terminalCloseBtn.addEventListener('click', collapseTerminal);
+    }
+
+    if (terminalToggleBtn) {
+        terminalToggleBtn.addEventListener('click', expandTerminal);
+    }
+
+    window.addEventListener('resize', () => {
+        if (!isDesktop()) {
+            // remove classes (on mobile) to prevent issues
+            terminalWindow.classList.remove('collapsed');
+            terminalToggleBtn.classList.remove('visible');
+        }
+    });
 
     const observerOptions = {
         threshold: 0.1,

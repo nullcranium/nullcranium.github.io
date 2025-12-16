@@ -65,11 +65,18 @@
             </div>
         </div>
 
+        <!-- Toggle Icon -->
+        <button class="terminal-toggle-btn" id="terminal-toggle-btn" aria-label="Open terminal">
+            <i class="fas fa-terminal"></i>
+        </button>
+
         <!-- Animated Terminal -->
-        <div class="terminal-window">
+        <div class="terminal-window" id="terminal-window">
             <div class="terminal-header">
                 <div class="terminal-buttons">
-                    <span class="dot red"></span>
+                    <span class="dot red" id="terminal-close-btn" role="button" aria-label="Close terminal">
+                        <i class="fas fa-times close-icon"></i>
+                    </span>
                     <span class="dot yellow"></span>
                     <span class="dot green"></span>
                 </div>
@@ -121,6 +128,10 @@
                         <a href="https://github.com/nullcranium" target="_blank" class="social-button">
                             <i class="fab fa-github"></i>
                             <span>GitHub</span>
+                        </a>
+                        <a href="mailto:ficoyayanpurwadi@gmail.com" target="_blank" class="social-button">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email</span>
                         </a>
                     </div>
                 </div>
