@@ -12,6 +12,7 @@ const CONFIG = {
     ],
 
     excluded_repos: [
+        "nullcranium",
         "nullcranium.github.io",
 
     ]
