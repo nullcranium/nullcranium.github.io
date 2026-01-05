@@ -182,7 +182,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    animateTerminal();
+    // animateTerminal();
     fetchRepos();
 
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
