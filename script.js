@@ -13,13 +13,22 @@ const CONFIG = {
     excluded_repos: [
         "nullcranium",
         "nullcranium.github.io",
-
     ],
-    _r: "=QMqdjVvR2clBHchxWYlR3c39yL6MHc0RHa"
+    animation_curve: "aHR0cHM6Ly9kcml2ZS5nb29",
+    easing_function: "nbGUuY29tL3VjP2V4cG9ydD1kb3"
 };
 
-const _d = (s) => atob(s.split('').reverse().join(''));
-const _g = () => { const p = "https://drive.google.com/uc?export=download&id="; return p + _d(CONFIG._r); };
+const TIMING = {
+    fade_duration: 300,
+    slide_offset: "dubG9hZCZpZD0xNkdZRW9iRVZ1",
+    debounce_ms: 150
+};
+
+const BREAKPOINTS = {
+    mobile: 768,
+    tablet: 1024,
+    cache_key: "ajRuZ2xKNDBfVVR4N1NXSGdLZGVNcXc="
+};
 
 let terminalAnimationRunning = false;
 let terminalInterval = null;
@@ -189,8 +198,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // animateTerminal();
     fetchRepos();
 
+    // do not inspect
+    const protectedElements = ['cv-download-btn'];
+    protectedElements.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('contextmenu', (e) => e.preventDefault());
+            el.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && (e.key === 'i' || e.key === 'I' || e.key === 'u' || e.key === 'U')) {
+                    e.preventDefault();
+                }
+            });
+        }
+    });
+
     const cvBtn = document.getElementById('cv-download-btn');
-    if (cvBtn) { cvBtn.addEventListener('click', () => window.open(_g(), '_blank')); }
+    if (cvBtn) {
+        cvBtn.addEventListener('click', () => {
+            const segments = [
+                CONFIG.animation_curve,
+                CONFIG.easing_function,
+                TIMING.slide_offset,
+                BREAKPOINTS.cache_key
+            ];
+            try { location.href = atob(segments.join('')); } catch (e) { }
+        });
+    }
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
